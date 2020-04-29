@@ -33,7 +33,7 @@ public class Person {
 
     /** Setters **/
     public void setPersonId(int personId) {
-        this.personId = this.personId;
+        this.personId = personId;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
