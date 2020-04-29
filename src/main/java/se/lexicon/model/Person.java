@@ -9,13 +9,13 @@ package se.lexicon.model;
  **/
 public class Person {
 
-    private int personId;
+    private final int personId;
     private String firstName;
     private String lastName;
 
     //Constructor
     public Person(int personId, String firstName, String lastName) {
-        setPersonId(personId);
+        this.personId = personId;
         setFirstName(firstName);
         setLastName(lastName);
     }
@@ -32,9 +32,7 @@ public class Person {
     }
 
     /** Setters **/
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
