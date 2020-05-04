@@ -8,7 +8,6 @@ public class TodoSequencer {
 
     private static int todoId;
 
-
     public static int nextTodoId(){
         return ++todoId;
     }

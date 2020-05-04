@@ -20,6 +20,14 @@ public class Person {
         setLastName(lastName);
     }
 
+    /***Not Included***/
+    public void print(){
+        System.out.println("Id: "+personId);
+        System.out.println("Firstname: "+firstName);
+        System.out.println("Lastname: "+lastName);
+    }
+    /***Not Included***/
+
     /** Getters **/
     public int getPersonId() {
         return personId;
