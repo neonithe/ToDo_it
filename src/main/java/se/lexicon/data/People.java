@@ -1,25 +1,7 @@
 package se.lexicon.data;
 
 import se.lexicon.model.Person;
-
 import java.util.Arrays;
-
-/**
- Create a new class called People inside the data package.
- a. Have a private static Person array declared and instantiated as empty and not null (new Person[0]).
- b. Add a method public int size() that return the length of the array.
- c. Add a method public Person[] findAll() that return the person array.
- d. Add a method public Person findById(int personId) that return the person that has a mathing personId as
- the passed in parameter.
-
- e. Add a method that creates a new Person, adds newly created object in the array and then return the created object.
- You have to “expand” the Person array. (tip: send in parameters needed to create the Person object and
- use the PersonSequencer to give you a unique personId)
-
- f. Add a method public void clear() that clears all Person objects from the Person array.
- g. Unit test People class with Junit.
- h. Commit changes.
- **/
 
 public class People {
 
@@ -44,9 +26,12 @@ public class People {
         return result;
     }
 
-    public void newPerson(Person newPers) {
+    public void newPerson(String firstName, String lastName) {
+
+    Person newPerson = new Person(PersonSequencer.nextPersonId(), firstName,lastName);
+
         Person[] newArray = Arrays.copyOf(person, person.length + 1);
-        newArray[newArray.length - 1] = newPers;
+            newArray[newArray.length - 1] = newPerson;
         person = newArray;
     }
 
@@ -64,16 +49,28 @@ public class People {
      c. Commit and Push to GitHub
      **/
 
+    public static void findIndexDelete(int target){
 
-    /****Inte enl insturktion***************************************** PRINT FUNCTION */
-    public static void printAll() {
-        for(int i = 0; i<person.length; i++){
-            person[i].print();
+        for(int i=0; i < person.length; i++){
+            if(person[i].getPersonId() == target){
+                deletePerson(person,i);
+                person[i].print();
+            }
         }
     }
-    public static void printTest(){
-        System.out.println(person[2].getPersonId());
+
+    public static Person[] deletePerson( Person[] array, int index){
+        //
+        Person[] useList = new Person[array.length - 1];
+        int nonDeletedElements = array.length - (index+1);
+
+        //Copy the elements before the index pos
+        System.arraycopy(array,0,useList,0,index);
+        //Copy the elements after the index pos
+        System.arraycopy(array,index+1,useList,index,nonDeletedElements);
+
+        return useList;
     }
-    /****Inte enl insturktion******/
+
 
 }

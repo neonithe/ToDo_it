@@ -7,18 +7,18 @@ import se.lexicon.data.TodoSequencer;
 import se.lexicon.model.Person;
 import se.lexicon.model.Todo;
 
-import javax.naming.NameNotFoundException;
-import java.util.Arrays;
-
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        People myObj = new People();
+
+    }
+
+}
+
+  /*  En massa testkod
+
+     People myObj = new People();
         TodoItems myTodoItems = new TodoItems();
 
 
@@ -47,7 +47,7 @@ public class App
 
 
     }
-    /*************************************************************************  Person ***/
+    *************************************************************************  Person ***
     public static int newId(){
         int newId = PersonSequencer.nextPersonId();
         return newId;
@@ -57,7 +57,7 @@ public class App
         Person person = new Person(App.newId(),fN,lN);
         myObj.newPerson(person);
     }
-    /*************************************************************************  TODO ***/
+    *************************************************************************  TODO ***
     public static int newIdTodo(){
         int newIdTodo = TodoSequencer.nextTodoId();
         return newIdTodo;
@@ -71,5 +71,4 @@ public class App
         Todo myObj = new Todo(newIdTodo(),desk);
         myObj.setDone(done);
 
-    }
-}
+    }*/

@@ -2,15 +2,8 @@ package se.lexicon.data;
 
 import se.lexicon.model.Person;
 import se.lexicon.model.Todo;
-
 import java.util.Arrays;
 
-/**
- Create a new class called TodoItems inside the data package.
- a. TodoItems should have the same functionality as the People class.
- b. Unit test TodoItems class
- c. Commit changes
- **/
 public class TodoItems {
 
     private static Todo[] todo = new Todo[0];
@@ -24,7 +17,6 @@ public class TodoItems {
         return todo;
     }
 
-
     public Todo findById(int todoId){
         Todo result = todo[0];
 
@@ -36,9 +28,12 @@ public class TodoItems {
         return result;
     }
 
-    public void newTodo(Todo newTodos) {
+    public void newTodo(String text) {
+
+    Todo newTodo = new Todo(TodoSequencer.nextTodoId(), text);
+
         Todo[] newArray = Arrays.copyOf(todo, todo.length + 1);
-        newArray[newArray.length - 1] = newTodos;
+            newArray[newArray.length - 1] = newTodo;
         todo = newArray;
     }
 
@@ -46,17 +41,6 @@ public class TodoItems {
         Todo[] todo = new Todo[0];
     }
 
-        /*************************************************************************/
-        /**
-         Add the following methods to TodoItems class
-         a. public Todo[] findByDoneStatus(boolean doneStatus) – Returns array with objects that has a matching done status.
-         b. public Todo[] findByAssignee(int personId) – Returns array with objects that has an assignee with a
-         personId matching.
-         c. public Todo[] findByAssignee(Person assignee) – Returns array with objects that has sent in Person.
-         d. public Todo[] findUnassignedTodoItems() – Returns an array of objects that does not have an assignee set.
-         e. Unit test changes
-         f. Commit.
-         **/
        public Todo[] findByDoneStatus(boolean doneStatus){
 
            Todo[] useList = new Todo[0];
@@ -84,8 +68,8 @@ public class TodoItems {
            }
             return useList;
         }
-
-        public Todo[] findByAssigneeId(int personId) {
+        /*** This is not working ***/
+/*        public Todo[] findByAssigneeId(int personId) {
            Todo[] useList = new Todo[0];
 
            for (int i = 0; i < todo.length; i++) {
@@ -97,7 +81,7 @@ public class TodoItems {
                }
            }
            return useList;
-       }
+       } */
 
         public Todo[] findUnassignedTodoItems(){
             Todo[] useList = new Todo[0];
@@ -122,21 +106,9 @@ public class TodoItems {
          b. Unit test changes
          c. Commit and Push to GitHub
          **/
-  /*      public static void removeFromArray(){
+  /*     public static void removeFromArray(){
 
             for()
-        } */
-
-
-    /****Inte enl insturktion***************************************** PRINT FUNCTION */
-    public static void printAll() {
-        for(int i = 0; i<todo.length; i++){
-            todo[i].print();
-        }
-    }
-    public static void printTest(){
-        System.out.println(todo[2].getTodoId());
-    }
-    /****Inte enl insturktion******/
+*/
 
 }

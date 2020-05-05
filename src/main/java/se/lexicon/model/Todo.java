@@ -1,13 +1,5 @@
 package se.lexicon.model;
 
-/**
- Create Todo class in the model package
- a. Required fields are todoId (int and final), description (String), done (boolean) and assignee (Person).
- b. Make a constructor that take in todoId (int) and a description (String).
- c. Create needed getters and setters.
- d. Unit test Todo class with Junit.
- e. Commit changes.
- **/
 public class Todo {
 
     private final int todoId;
@@ -45,15 +37,6 @@ public class Todo {
     public void setAssignee(Person assignee) {
         this.assignee = assignee;
     }
-
-    /***Not Included***/
-    public void print(){
-        System.out.println("Id: "+todoId);
-        System.out.println("Todo: "+description);
-        System.out.println("Is Done: "+isDone());
-    }
-    /***Not Included***/
-
 }
 
 
