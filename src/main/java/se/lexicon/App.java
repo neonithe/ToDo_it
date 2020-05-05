@@ -19,26 +19,31 @@ public class App
     public static void main( String[] args )
     {
         People myObj = new People();
+        TodoItems myTodoItems = new TodoItems();
+
 
         newPersona("Mattias", "Andersson");
         newPersona("Martin","Zimmerman");
         newPersona("Sofia","Sonesson");
         newPersona("Hannah","Svensson");
 
-        newTodos("Do this1");
-        newTodos("Do this2");
-        newTodos("Do this3");
+        newTodosTrue("Test this first1", true);
+        newTodosTrue("Test this first2", true);
+        newTodosTrue("Test this first3", false);
+        newTodosTrue("Test this first4", false);
+        newTodosTrue("Test this first5", true);
 
         // Array Size
-     //   System.out.println(myObj.size());
+        //   System.out.println(myObj.size());
         // Find all
 
         // Find by user id
-     //   myObj.findById(2).print();
+        //   myObj.findById(2).print();
 
         // Find by status
-        TodoItems.printAll();
         // Done not done?
+        // set TodoId 1 to done
+        TodoItems. printAll();
 
 
     }
@@ -61,5 +66,9 @@ public class App
         TodoItems myObj = new TodoItems();
         Todo todo = new Todo(newIdTodo(),desk);
         myObj.newTodo(todo);
+    }
+    public static void newTodosTrue(String desk, boolean done){
+        Todo myObj = new Todo(newIdTodo(),desk);
+        myObj.setDone(done);
     }
 }

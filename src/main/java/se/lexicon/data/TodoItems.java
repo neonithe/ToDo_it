@@ -59,6 +59,16 @@ public class TodoItems {
          **/
        public Todo[] findByDoneStatus(boolean doneStatus){
 
+           Todo[] useList = new Todo[0];
+
+           for(int i=0; i<todo.length; i++){
+               if(todo[i].isDone() == doneStatus) {
+                   Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1);
+                   tempArray[useList.length] = todo[i];
+                   useList = tempArray;
+               }
+           }
+           return useList;
         }
 
  /*       public Todo[] findByAssigneeId(int personId){
@@ -92,10 +102,9 @@ public class TodoItems {
 
     /****Inte enl insturktion***************************************** PRINT FUNCTION */
     public static void printAll() {
-        TodoItems obj = new TodoItems();
-        Todo[] array = obj.findByDoneStatus(false);
-        for(int i = 0; i<array.length; i++){
-            array[i].print();
+       TodoItems.
+        for(int i = 0; i<todo.length; i++){
+            todo[i].print();
         }
     }
     public static void printTest(){
