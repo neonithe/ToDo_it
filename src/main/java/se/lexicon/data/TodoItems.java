@@ -71,19 +71,47 @@ public class TodoItems {
            return useList;
         }
 
- /*       public Todo[] findByAssigneeId(int personId){
-            //
-            if ( personId == Person[]){
-                return Person[i];
-            }
-        }
         public Todo[] findByAssignee(Person assignee){
-            //return objects?
-            return assignee;
+           Todo[] useList = new Todo[0];
+
+           for(int i=0; i < todo.length; i++){
+               if(todo[i].getAssignee() == assignee){
+                   Todo[] tempArray = Arrays.copyOf(useList, useList.length +1){
+                       tempArray[useList.length] = todo[i];
+                   useList = tempArray;
+                   }
+               }
+           }
+            return useList;
         }
+
+        public Todo[] findByAssigneeId(int personId) {
+           Todo[] useList = new Todo[0];
+
+           for (int i = 0; i < todo.length; i++) {
+               if (todo[i]. == personId) {
+                   Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1) {
+                       tempArray[useList.length] = todo[i];
+                       useList = tempArray;
+                   }
+               }
+           }
+           return useList;
+       }
+
         public Todo[] findUnassignedTodoItems(){
-            return objectsnotassigned;
-        }  */
+            Todo[] useList = new Todo[0];
+
+            for (int i = 0; i < todo.length; i++) {
+                if (todo[i].getAssignee() == null) {
+                    Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1) {
+                        tempArray[useList.length] = todo[i];
+                        useList = tempArray;
+                    }
+                }
+            }
+            return useList;
+        }
 
         /**
          Add the following to TodoItems AND People class.
@@ -102,7 +130,6 @@ public class TodoItems {
 
     /****Inte enl insturktion***************************************** PRINT FUNCTION */
     public static void printAll() {
-       TodoItems.
         for(int i = 0; i<todo.length; i++){
             todo[i].print();
         }

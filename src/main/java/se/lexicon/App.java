@@ -70,5 +70,6 @@ public class App
     public static void newTodosTrue(String desk, boolean done){
         Todo myObj = new Todo(newIdTodo(),desk);
         myObj.setDone(done);
+
     }
 }

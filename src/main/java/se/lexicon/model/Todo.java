@@ -19,7 +19,6 @@ public class Todo {
     public Todo(int todoId, String description) {
         this.todoId = todoId;
         setDescription(description);
-
     }
 
     /**Getters**/
