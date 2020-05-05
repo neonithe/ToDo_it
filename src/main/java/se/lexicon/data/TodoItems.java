@@ -64,7 +64,7 @@ public class TodoItems {
            for(int i=0; i<todo.length; i++){
                if(todo[i].isDone() == doneStatus) {
                    Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1);
-                   tempArray[useList.length] = todo[i];
+                        tempArray[useList.length] = todo[i];
                    useList = tempArray;
                }
            }
