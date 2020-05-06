@@ -62,15 +62,16 @@ public class TodoItems {
            //Find Assigned todos and set into new array
            for(int i=0; i < todo.length; i++){
                if(todo[i].getAssignee() == assignee){
-                   Todo[] tempArray = Arrays.copyOf(useList, useList.length +1){
+                   Todo[] tempArray = Arrays.copyOf(useList, useList.length +1);
                        tempArray[useList.length] = todo[i];
                    useList = tempArray;
                    }
                }
-           }
             //Return assigned elements/objects array
             return useList;
-        }
+           }
+
+
         /*** This is not working ***/
 /*        public Todo[] findByAssigneeId(int personId) {
            Todo[] useList = new Todo[0];
@@ -92,12 +93,11 @@ public class TodoItems {
             //Find not assigned and set into new array
             for (int i = 0; i < todo.length; i++) {
                 if (todo[i].getAssignee() == null) {
-                    Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1) {
+                    Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1);
                         tempArray[useList.length] = todo[i];
                         useList = tempArray;
                     }
                 }
-            }
             //Return not assigned elements/objects array
             return useList;
         }
