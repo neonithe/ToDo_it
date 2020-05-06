@@ -60,7 +60,7 @@ public class People {
     }
 
     public static Person[] deletePerson( Person[] array, int index){
-        //
+        //Temp array with new size, and old elements
         Person[] useList = new Person[array.length - 1];
         int nonDeletedElements = array.length - (index+1);
 
@@ -69,7 +69,9 @@ public class People {
         //Copy the elements after the index pos
         System.arraycopy(array,index+1,useList,index,nonDeletedElements);
 
-        return useList;
+        person = useList;
+
+        return person;
     }
 
 
