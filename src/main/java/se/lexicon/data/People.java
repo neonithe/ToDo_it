@@ -16,8 +16,9 @@ public class People {
     }
 
     public Person findById(int personId) {
-        Person result = person[0];
+      Person result = person[0];
 
+      //Find matching id number in person array
         for (int i = 0; i < person.length; i++){
             if (personId == person[i].getPersonId()) {
                     result = person[i];
@@ -27,9 +28,9 @@ public class People {
     }
 
     public void newPerson(String firstName, String lastName) {
-
+    //New person: Create a unique number and input of First and last name
     Person newPerson = new Person(PersonSequencer.nextPersonId(), firstName,lastName);
-
+        //Add new memory slot into array
         Person[] newArray = Arrays.copyOf(person, person.length + 1);
             newArray[newArray.length - 1] = newPerson;
         person = newArray;

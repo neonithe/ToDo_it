@@ -1,12 +1,5 @@
 package se.lexicon.model;
-/**
- Create Person class in package model.
- a. Required fields are personId (int and final), firstName and lastName (String).
- b. Make a constructor that can build the object.
- c. Create needed getters and setters.
- d. Unit test with Junit.
- e. Commit changes.
- **/
+
 public class Person {
 
     private final int personId;
@@ -19,14 +12,6 @@ public class Person {
         setFirstName(firstName);
         setLastName(lastName);
     }
-
-    /***Not Included***/
-    public void print(){
-        System.out.println("Id: "+personId);
-        System.out.println("Firstname: "+firstName);
-        System.out.println("Lastname: "+lastName);
-    }
-    /***Not Included***/
 
     /** Getters **/
     public int getPersonId() {

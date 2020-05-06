@@ -19,7 +19,7 @@ public class TodoItems {
 
     public Todo findById(int todoId){
         Todo result = todo[0];
-
+        //Find matching id number in todo array
         for (int i = 0; i < todo.length; i++){
             if (todoId == todo[i].getTodoId()) {
                 result = todo[i];
@@ -29,9 +29,9 @@ public class TodoItems {
     }
 
     public void newTodo(String text) {
-
+    //New Todo: Create unique id number and text input
     Todo newTodo = new Todo(TodoSequencer.nextTodoId(), text);
-
+        //Add new memory slot into array
         Todo[] newArray = Arrays.copyOf(todo, todo.length + 1);
             newArray[newArray.length - 1] = newTodo;
         todo = newArray;
@@ -42,9 +42,9 @@ public class TodoItems {
     }
 
        public Todo[] findByDoneStatus(boolean doneStatus){
-
+           //Create a return array
            Todo[] useList = new Todo[0];
-
+           //Find todos with matching input status and set into new array
            for(int i=0; i<todo.length; i++){
                if(todo[i].isDone() == doneStatus) {
                    Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1);
@@ -52,12 +52,14 @@ public class TodoItems {
                    useList = tempArray;
                }
            }
+           //Return matching input status array
            return useList;
         }
 
         public Todo[] findByAssignee(Person assignee){
+           //Create a return array
            Todo[] useList = new Todo[0];
-
+           //Find Assigned todos and set into new array
            for(int i=0; i < todo.length; i++){
                if(todo[i].getAssignee() == assignee){
                    Todo[] tempArray = Arrays.copyOf(useList, useList.length +1){
@@ -66,6 +68,7 @@ public class TodoItems {
                    }
                }
            }
+            //Return assigned elements/objects array
             return useList;
         }
         /*** This is not working ***/
@@ -84,8 +87,9 @@ public class TodoItems {
        } */
 
         public Todo[] findUnassignedTodoItems(){
+            //Create a return array
             Todo[] useList = new Todo[0];
-
+            //Find not assigned and set into new array
             for (int i = 0; i < todo.length; i++) {
                 if (todo[i].getAssignee() == null) {
                     Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1) {
@@ -94,6 +98,7 @@ public class TodoItems {
                     }
                 }
             }
+            //Return not assigned elements/objects array
             return useList;
         }
 
