@@ -16,14 +16,14 @@ public class People {
     }
 
     public Person findById(int personId) {
-      Person result = person[0];
+        Person result = null;
 
-      //Find matching id number in person array
-        for (int i = 0; i < person.length; i++){
+        //Find matching id number in person array
+        for (int i = 0; i < person.length; i++) {
             if (personId == person[i].getPersonId()) {
-                    result = person[i];
+                result = person[i];
             }
-    }
+        }
         return result;
     }
 
@@ -37,12 +37,12 @@ public class People {
     }
 
     public void clear() {
-        Person[] person = new Person[0];
+        person = new Person[0];
     }
 
-    public static Person[] deletePerson(int target){
+    public boolean deletePerson(int target){
         //Find index via id number (target)
-        int index =0;
+        Integer index = null;
 
         for(int i=0; i < person.length; i++){
             if(person[i].getPersonId() == target){
@@ -50,19 +50,20 @@ public class People {
             }
         }
 
-        //Temp array with new size
-        Person[] useList = new Person[person.length - 1];
-        int nonDeletedElements = person.length - (index+1);
+        if(index != null) {
+            //Temp array with new size
+            Person[] useList = new Person[person.length - 1];
+            int nonDeletedElements = person.length - (index + 1);
 
-                //Copy the elements before the index pos
-                System.arraycopy(person,0,useList,0,index);
-                //Copy the elements after the index pos
-                System.arraycopy(person,index+1,useList,index,nonDeletedElements);
-                //Update person array with new list
-                person = useList;
-
-        return person;
+            //Copy the elements before the index pos
+            System.arraycopy(person, 0, useList, 0, index);
+            //Copy the elements after the index pos
+            System.arraycopy(person, index + 1, useList, index, nonDeletedElements);
+            //Update person array with new list
+            person = useList;
+            return true;
+        } else {
+            return false;
+        }
     }
-
-
 }
