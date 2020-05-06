@@ -39,37 +39,26 @@ public class People {
         Person[] person = new Person[0];
     }
 
-    /**
-     Add the following to TodoItems AND People class.
-     a. Functionality to remove object from array. (not nulling)
-     First: you need to find the correct array index of the object.
-     Second: You need to rebuild array by excluding the object on found index.
-
-     b. Unit test changes
-     c. Commit and Push to GitHub
-     **/
-
-    public static void findIndexDelete(int target){
+    public static Person[] deletePerson(int target){
+        //Find index via id number (target)
+        int index =0;
 
         for(int i=0; i < person.length; i++){
             if(person[i].getPersonId() == target){
-                deletePerson(person,i);
-                person[i].print();
+                index =i;
             }
         }
-    }
 
-    public static Person[] deletePerson( Person[] array, int index){
-        //Temp array with new size, and old elements
-        Person[] useList = new Person[array.length - 1];
-        int nonDeletedElements = array.length - (index+1);
+        //Temp array with new size
+        Person[] useList = new Person[person.length - 1];
+        int nonDeletedElements = person.length - (index+1);
 
-        //Copy the elements before the index pos
-        System.arraycopy(array,0,useList,0,index);
-        //Copy the elements after the index pos
-        System.arraycopy(array,index+1,useList,index,nonDeletedElements);
-
-        person = useList;
+                //Copy the elements before the index pos
+                System.arraycopy(person,0,useList,0,index);
+                //Copy the elements after the index pos
+                System.arraycopy(person,index+1,useList,index,nonDeletedElements);
+                //Update person array with new list
+                person = useList;
 
         return person;
     }
