@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class TodoItems {
 
     private static Todo[] todo = new Todo[0];
+    private People myObj = new People();
 
 
     public int size(){
@@ -74,7 +75,7 @@ public class TodoItems {
         public Todo[] findByAssigneeId(int personId) {
            //Create a return array
            Todo[] useList = new Todo[0];
-           Person[] person = new Person[0];
+           Person[] person = myObj.findAll();
 
            for (int i = 0; i < person.length; i++) {
                if (person[i].getPersonId() == personId) {           //Find person via ID
