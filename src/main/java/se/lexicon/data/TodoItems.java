@@ -71,21 +71,26 @@ public class TodoItems {
             return useList;
            }
 
-
-        /*** This is not working ***/
-/*        public Todo[] findByAssigneeId(int personId) {
+        public Todo[] findByAssigneeId(int personId) {
+           //Create a return array
            Todo[] useList = new Todo[0];
+           Person[] person = new Person[0];
 
-           for (int i = 0; i < todo.length; i++) {
-               if (todo[i]. == personId) {
-                   Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1) {
-                       tempArray[useList.length] = todo[i];
-                       useList = tempArray;
+           for (int i = 0; i < person.length; i++) {
+               if (person[i].getPersonId() == personId) {           //Find person via ID
+
+                   for(int j=0; j < todo.length; i++){              //Find todos via person array index (assignee)
+                       if(todo[j].getAssignee() == person[i]){
+
+                           Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1);
+                               tempArray[useList.length] = todo[i];
+                               useList = tempArray;
+                       }
                    }
                }
            }
            return useList;
-       } */
+       }
 
         public Todo[] findUnassignedTodoItems(){
             //Create a return array
