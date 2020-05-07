@@ -84,12 +84,13 @@ public class TodoItems {
         public Todo[] findByAssigneeId(int personId) {
            //Create a return array
            Todo[] useList = new Todo[0];
+           //Get person array
            Person[] person = myObj.findAll();
 
            for (int i = 0; i < person.length; i++) {
                if (person[i].getPersonId() == personId) {           //Find person via ID
 
-                   for(int j=0; j < todo.length; i++){              //Find todos via person array index (assignee)
+                   for(int j=0; j < todo.length; j++){              //Find todos via person array index (assignee)
                        if(todo[j].getAssignee() == person[i]){
 
                            Todo[] tempArray = Arrays.copyOf(useList, useList.length + 1);
@@ -117,28 +118,29 @@ public class TodoItems {
             return useList;
         }
 
-        public static Todo[] deleteTodo(int target){
+        public boolean deleteTodo(int target){
             //Find index via id number (target)
-            int index =0;
+            Integer index =null;
 
             for(int i=0; i < todo.length; i++){
                 if(todo[i].getTodoId() == target){
                     index =i;
                 }
             }
+            if(index != null) {
+                //Temp array with new size
+                Todo[] useList = new Todo[todo.length - 1];
+                int nonDeletedElements = todo.length - (index + 1);
 
-            //Temp array with new size
-            Todo[] useList = new Todo[todo.length - 1];
-            int nonDeletedElements = todo.length - (index+1);
-
-                    //Copy the elements before the index pos
-                    System.arraycopy(todo,0,useList,0,index);
-                    //Copy the elements after the index pos
-                    System.arraycopy(todo,index+1,useList,index,nonDeletedElements);
-                    //Update person array with new list
-                    todo = useList;
-
-            return todo;
+                //Copy the elements before the index pos
+                System.arraycopy(todo, 0, useList, 0, index);
+                //Copy the elements after the index pos
+                System.arraycopy(todo, index + 1, useList, index, nonDeletedElements);
+                //Update person array with new list
+                todo = useList;
+                return true;
+            } else {
+                return false;
+            }
         }
-
 }

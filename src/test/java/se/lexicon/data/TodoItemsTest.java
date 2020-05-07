@@ -15,6 +15,7 @@ public class TodoItemsTest {
     private People peopleMyObj = new People();
     private TodoItems todoMyObj = new TodoItems();
 
+
     @Before
     public void initiate_class() {
         peopleMyObj.clear();
@@ -23,11 +24,11 @@ public class TodoItemsTest {
         PersonSequencer.reset();
         TodoSequencer.reset();
 
-        peopleMyObj.newPerson("Mattias", "Andersson");    //person[0]
-        peopleMyObj.newPerson("Martin", "Zimmerman");     //person[1]
+        peopleMyObj.newPerson("Mattias", "Andersson");      //person[0]   id 1
+        peopleMyObj.newPerson("Martin", "Zimmerman");       //person[1]   id 2
 
-        todoMyObj.newTodo("TestText 1");
-        todoMyObj.newTodo("TestText 2");
+        todoMyObj.newTodo("TestText 1");                //todo[0]   id 1
+        todoMyObj.newTodo("TestText 2");                //todo[1]   id 2
 
     }
 
@@ -128,6 +129,46 @@ public class TodoItemsTest {
             int arrayLength = obj.length;
         //Return one added
             assertEquals(1, arrayLength);
+
+    }
+    @Test
+    public void find_by_assignee_id_return_1_to_array(){
+        //Setup
+            Person[] personArray = peopleMyObj.findAll();
+            Todo[]  todoArray = todoMyObj.findAll();
+
+        //Assign person to first todo ( todo[0] id 1 )
+            todoArray[0].setAssignee(personArray[0]);
+
+        //Send in the question
+            Todo[] obj = todoMyObj.findByAssigneeId(1);
+            int arrayLength = obj.length;
+
+        //Return one added
+            assertEquals(1, arrayLength);
+
+    }
+    @Test
+    public void find_unassigned_Todos_return_1_to_array(){
+        //Setup
+            Todo[] todoArray = todoMyObj.findAll();
+            Person[] personArray = peopleMyObj.findAll();
+
+        //Of a array of 2 i set one assigned, this should return 1 in Unassigned array
+            todoArray[0].setAssignee(personArray[0]);
+
+            Todo[] array = todoMyObj.findUnassignedTodoItems();
+            int arrayLength = array.length;
+            assertEquals(1, arrayLength);
+
+    }
+    @Test
+    public void delete_todo(){
+
+        assertEquals(true, todoMyObj.deleteTodo(1));
+        assertEquals(todoMyObj.findAll().length, 1);
+        assertNotNull(todoMyObj.findById(2));
+        assertNull(todoMyObj.findById(1));
 
     }
 
