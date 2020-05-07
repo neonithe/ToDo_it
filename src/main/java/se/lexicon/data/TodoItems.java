@@ -6,6 +6,15 @@ import java.util.Arrays;
 
 public class TodoItems {
 
+    /**
+     * FIND BY DONE STATUS
+     * Known problem. Is the idea that all new project should be set to false?
+     * Now you can get return 0 on list in find by done
+     * Refactor to set all new todos to false: setDone(false); Then all object should be false from the begining
+     * Do this if time is left after testing.
+     * **/
+
+
     private static Todo[] todo = new Todo[0];
     private People myObj = new People();
 
@@ -19,7 +28,7 @@ public class TodoItems {
     }
 
     public Todo findById(int todoId){
-        Todo result = todo[0];
+        Todo result = null;
         //Find matching id number in todo array
         for (int i = 0; i < todo.length; i++){
             if (todoId == todo[i].getTodoId()) {

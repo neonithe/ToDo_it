@@ -23,8 +23,8 @@ public class TodoItemsTest {
         PersonSequencer.reset();
         TodoSequencer.reset();
 
-    //    peopleMyObj.newPerson("Mattias", "Andersson");    //person[0]
-    //    peopleMyObj.newPerson("Martin", "Zimmerman");     //person[1]
+        peopleMyObj.newPerson("Mattias", "Andersson");    //person[0]
+        peopleMyObj.newPerson("Martin", "Zimmerman");     //person[1]
 
         todoMyObj.newTodo("TestText 1");
         todoMyObj.newTodo("TestText 2");
@@ -35,6 +35,15 @@ public class TodoItemsTest {
     public void destroy_array_reset_to_zero() {
         todoMyObj.clear();
         peopleMyObj.clear();
+
+    }
+
+    @Test
+    public void test_find_by_id(){
+
+        Todo actual = todoMyObj.findById(2);
+        assertEquals( 2, actual.getTodoId());
+        assertEquals( "TestText 2", actual.getDescription());
 
     }
 
@@ -60,21 +69,18 @@ public class TodoItemsTest {
 
     @Test
     public void test_return_array() {
-        todoMyObj.clear();
-        Todo[] array = todoMyObj.findAll();
-        for(int i=0; i < todoMyObj.findAll().length; i++){
-            System.out.println(Arrays.toString(array));
-            System.out.println(array[i].getTodoId());
-            System.out.println(array[i].getDescription());
-            System.out.println(array[i].getAssignee());
-            System.out.println(array[i].isDone());
-        }
-        //Expected
-    //    int expected = 2;
-        //Actual
-      //  int actual = todoMyObj.findAll().length;
 
-        //  assertEquals(expected, actual);
+        //Expected
+        int expected = 2;
+        //Actual
+        int actual = todoMyObj.findAll().length;
+        Todo[] array = todoMyObj.findAll();
+
+        for(int i =0; i < array.length; i++){
+            assertEquals(i+1, array[i].getTodoId());
+        }
+
+          assertEquals(expected, actual);
 
     }
 
@@ -87,6 +93,43 @@ public class TodoItemsTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void test_find_by_id_non_existed_id(){
+
+
+        //Actual
+        Todo actual = todoMyObj.findById(5);
+        assertNull (actual);
+
+    }
+
+    @Test
+    public void find_if_done_true(){
+        //Setup
+        Todo[] array = todoMyObj.findAll();
+        array[0].setDone(true);
+
+        Todo[] obj = todoMyObj.findByDoneStatus(true);
+           int arrayLength = obj.length;
+           System.out.println(arrayLength);
+
+           assertEquals(1,arrayLength);
+
+    }
+    @Test
+    public void find_by_assignee(){
+        //Setup
+            Person[] personArray = peopleMyObj.findAll();
+            Todo[]  todoArray = todoMyObj.findAll();
+        //Assign person to first todo
+            todoArray[0].setAssignee(personArray[0]);
+        //Send in the question
+            Todo[] obj = todoMyObj.findByAssignee(personArray[0]);
+            int arrayLength = obj.length;
+        //Return one added
+            assertEquals(1, arrayLength);
+
+    }
 
 
 }
