@@ -39,7 +39,7 @@ public class TodoItems {
     }
 
     public void clear() {
-        Todo[] todo = new Todo[0];
+        todo = new Todo[0];
     }
 
        public Todo[] findByDoneStatus(boolean doneStatus){
